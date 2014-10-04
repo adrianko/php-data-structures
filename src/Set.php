@@ -40,7 +40,7 @@ class Set {
         $this->elements[] = $e;
         $this->elements = array_unique($this->elements);
 
-        return $exists;
+        return ($exists == true ? false : true);
     }
 
     /**
