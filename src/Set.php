@@ -95,11 +95,14 @@ class Set {
      * @return bool
      */
     public function equals(Set $s) {
-        if($s->toArray() == $this->elements) {
-            return true;
+        if(!is_array($s->toArray()) || !is_array($this->elements)) {
+            return false;
         }
 
-        return false;
+        $a = array_diff($s->toArray(), $this->elements);
+        $b = array_diff($this->elements, $s->toArray());
+
+        return $a === $b;
     }
 
     /**
