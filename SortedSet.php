@@ -12,4 +12,18 @@ require_once("Set.php");
  */
 class SortedSet extends Set {
 
+    /**
+     * Override parent method to provide sorting after adding
+     * @param $e
+     * @return bool
+     * @override
+     */
+    public function add($e) {
+        $exists = $this->contains($e);
+        $this->elements[] = $e;
+        $this->elements = array_unique($this->elements);
+        sort($this->elements);
+        return $exists;
+    }
+
 }
