@@ -4,7 +4,8 @@ require_once("SortedSet.php");
 
 function printSet($set, $action) {
     echo $action."\n";
-    echo $set."\n\n";
+    print_r($set);
+    echo "\n\n";
 }
 
 $set = new Set("a", "b", "c");
