@@ -72,11 +72,7 @@ class Set {
      * @return bool
      */
     public function contains($e) {
-        if(!in_array($e, $this->elements)) {
-            return false;
-        }
-
-        return true;
+        return in_array($e, $this->elements);
     }
 
     /**
