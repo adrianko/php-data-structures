@@ -17,7 +17,7 @@ class Set {
      * Holds all the elements of the set
      * @var array
      */
-    private $elements;
+    protected $elements;
 
     /**
      * Initializes the class and adds all args to the set
