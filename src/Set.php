@@ -111,11 +111,7 @@ class Set {
      * @return bool
      */
     public function isEmpty() {
-        if(count($this->elements) > 0) {
-            return false;
-        }
-
-        return true;
+        return empty($this->elements);
     }
 
     /**
