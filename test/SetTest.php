@@ -22,9 +22,18 @@ class SetTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($exp, $act);
     }
 
-    public function testSetAdd() {
+    public function testSetAddTrue() {
         $exp = true;
-        $act = (new Set())->add("a");
+        $set = new Set();
+        $act = $set->add("a");
+        $this->assertEquals($exp, $act);
+    }
+
+    public function testSetAddFalse() {
+        $exp = false;
+        $set = new Set();
+        $set->add("a");
+        $act = $set->add("a");
         $this->assertEquals($exp, $act);
     }
 
@@ -47,6 +56,24 @@ class SetTest extends PHPUnit_Framework_TestCase {
         $set = new Set("a", "b");
         $set->remove("b");
         $act = $set->toArray();
+        $this->assertEquals($exp, $act);
+    }
+
+    public function testSetIsEmptyTrue() {
+        $exp = true;
+        $set = new Set();
+        $set->add("a");
+        $set->remove("a");
+        $act = $set->isEmpty();
+        $this->assertEquals($exp, $act);
+    }
+
+    public function testSetIsEmptyFalse() {
+        $exp = false;
+        $set = new Set();
+        $set->add("a");
+        $set->remove("b");
+        $act = $set->isEmpty();
         $this->assertEquals($exp, $act);
     }
 
