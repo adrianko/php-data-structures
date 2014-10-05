@@ -10,27 +10,6 @@ require_once(realpath(dirname(__FILE__))."/../src/Stack.php");
 class StackTest extends PHPUnit_Framework_TestCase {
 
     /**
-     * @covers Stack::empty
-     */
-    public function testStackEmptyTrue() {
-        $exp = true;
-        $stack = new Stack("a");
-        $stack->pop();
-        $act = $stack->empty();
-        $this->assertEquals($exp, $act);
-    }
-
-    /**
-     * @covers Stack::empty
-     */
-    public function testStackEmptyFalse() {
-        $exp = false;
-        $stack = new Stack("a");
-        $act = $stack->empty();
-        $this->assertEquals($exp, $act);
-    }
-
-    /**
      * @covers Stack::peek
      */
     public function testStackPeek() {
