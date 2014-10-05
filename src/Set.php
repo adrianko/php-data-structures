@@ -141,7 +141,7 @@ class Set {
         foreach($args as $a) {
             if($this->remove($a) == true) {
                 $exists = true;
-            };
+            }
         }
 
         return $exists;
