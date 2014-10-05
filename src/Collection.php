@@ -34,10 +34,9 @@ abstract class Collection {
      * @return bool
      */
     public function add($e) {
-        $exists = $this->contains($e);
         $this->elements[] = $e;
 
-        return ($exists == true ? false : true);
+        return true;
     }
 
     /**
