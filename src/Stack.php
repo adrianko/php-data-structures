@@ -13,7 +13,7 @@ class Stack extends Collection{
 
     public function pop() {
         if(empty($this->elements)) {
-            throw New Exception("Empty stack");
+            throw new Exception("Empty stack");
         }
 
         return array_shift($this->elements);
@@ -21,9 +21,9 @@ class Stack extends Collection{
 
     public function peek() {
         if(empty($this->elements)) {
-            throw New Exception("Empty stack");
+            throw new Exception("Empty stack");
         }
-        
+
         return $this->elements[0];
     }
 
