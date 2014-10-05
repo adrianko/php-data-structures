@@ -1,6 +1,6 @@
 <?php
 
-require_once("Set.php");
+require_once(realpath(dirname(__FILE__))."/../src/Set.php");
 /**
  * Class SortedSet - data type
  *
