@@ -12,10 +12,20 @@ class SetTest extends PHPUnit_Framework_TestCase {
     /**
      * @covers Set::__construct
      */
-    public function testSetInitialisation() {
+    public function testSetInitialisationType() {
         $exp = "Set";
         $act = new Set();
         $this->assertInstanceOf($exp, $act);
+    }
+
+    /**
+     * @covers Set::__construct
+     */
+    public function testSetInitialisationContents() {
+        $exp = array("a", "b");
+        $set = new Set("a", "b");
+        $act = $set->toArray();
+        $this->assertEquals($exp, $act);
     }
 
     /**
@@ -54,6 +64,17 @@ class SetTest extends PHPUnit_Framework_TestCase {
         $set = new Set();
         $set->add("a");
         $act = $set->add("a");
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::add
+     */
+    public function testSetAddContents() {
+        $exp = array("a");
+        $set = new Set();
+        $set->add("a");
+        $act = $set->toArray();
         $this->assertEquals($exp, $act);
     }
 
@@ -162,6 +183,139 @@ class SetTest extends PHPUnit_Framework_TestCase {
         $exp = false;
         $set = new Set("b");
         $act = $set->contains("a");
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::clear
+     */
+    public function testSetClear() {
+        $exp = array();
+        $set = new Set("a", "b", "c");
+        $set->clear();
+        $this->assertEquals($exp, $set->toArray());
+    }
+
+    /**
+     * @covers Set::removeAll
+     */
+    public function testSetRemoveAllTrue() {
+        $exp = true;
+        $set = new Set("a", "b", "c", "d");
+        $act = $set->removeAll("a", "b");
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::removeAll
+     */
+    public function testSetRemoveAllFalse() {
+        $exp = false;
+        $set = new Set("a", "b", "c", "d");
+        $act = $set->removeAll("f", "e");
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::removeAll
+     */
+    public function testSetRemoveAllContents() {
+        $exp = array("a", "b");
+        $set = new Set("a", "b", "c", "d");
+        $set->removeAll("c", "d");
+        $act = $set->toArray();
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::addAll
+     */
+    public function testSetAddAllTrue() {
+        $exp = true;
+        $set = new Set();
+        $act = $set->addAll("a", "b");
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::addAll
+     */
+    public function testSetAddAllFalse() {
+        $exp = false;
+        $set = new Set("a", "b");
+        $act = $set->addAll("a", "b");
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::addAll
+     */
+    public function testSetAddAllContents() {
+        $exp = array("a", "b");
+        $set = new Set();
+        $set->addAll("a", "b");
+        $act = $set->toArray();
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::retainAll
+     */
+    public function testSetRetainAllTrue() {
+        $exp = true;
+        $set = new Set("a", "b", "c", "d");
+        $act = $set->retainAll("a", "b");
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::retainAll
+     */
+    public function testSetRetainAllFalse() {
+        $exp = false;
+        $set = new Set("a", "b");
+        $act = $set->retainAll("a", "b");
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::retainAll
+     */
+    public function testSetRetainAllContents() {
+        $exp = array("a", "b");
+        $set = new Set("a", "b", "c", "d");
+        $set->retainAll("a", "b");
+        $act = $set->toArray();
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::containsAll
+     */
+    public function testSetContainsAllTrue() {
+        $exp = true;
+        $set = new Set("a", "b", "c");
+        $act = $set->containsAll("a", "b");
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::containsAll
+     */
+    public function testSetContainsAllFalse() {
+        $exp = false;
+        $set = new Set("a", "b", "c");
+        $act = $set->containsAll("a", "d");
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::__toString
+     */
+    public function testSetToString() {
+        $exp = json_encode(array("a", "b"));
+        $set = new Set("a", "b");
+        $act = (string) $set;
         $this->assertEquals($exp, $act);
     }
 
