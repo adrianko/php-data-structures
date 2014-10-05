@@ -11,7 +11,7 @@ require_once(realpath(dirname(__FILE__))."/../src/Collection.php");
  * @author AK <akcodes3@gmail.com>
  * @version 0.1
  */
-class Queue extends Collection{
+class Queue extends Collection {
 
     protected $elements;
 
@@ -45,10 +45,11 @@ class Queue extends Collection{
     }
 
     /**
-     * @return mixed
+     * @param null $e
+     * @return bool|mixed
      * @throws Exception - no such element
      */
-    public function remove() {
+    public function remove($e = null) {
         if(empty($this->elements)) {
             throw new Exception("No such element");
         }
