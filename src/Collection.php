@@ -87,16 +87,16 @@ abstract class Collection {
 
     /**
      * Checks whether 2 collections are equal
-     * @param Set $s
+     * @param Collection $c
      * @return bool
      */
-    public function equals(Set $s) {
-        if(!is_array($s->toArray()) || !is_array($this->elements)) {
+    public function equals(Collection $c) {
+        if(!is_array($c->toArray()) || !is_array($this->elements)) {
             return false;
         }
 
-        $a = array_diff($s->toArray(), $this->elements);
-        $b = array_diff($this->elements, $s->toArray());
+        $a = array_diff($c->toArray(), $this->elements);
+        $b = array_diff($this->elements, $c->toArray());
 
         return $a === $b;
     }
