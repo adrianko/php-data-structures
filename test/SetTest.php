@@ -112,5 +112,58 @@ class SetTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($exp, $act);
     }
 
+    /**
+     * @covers Set::equals
+     */
+    public function testSetEqualsTrue() {
+        $exp = true;
+        $set1 = new Set("a", "b", "c");
+        $set2 = new Set("a", "b", "c");
+        $act = $set1->equals($set2);
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::equals
+     */
+    public function testSetEqualsFalse() {
+        $exp = false;
+        $set1 = new Set("a", "b", "c");
+        $set2 = new Set("a", "b", "d");
+        $act = $set1->equals($set2);
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::equals
+     */
+    public function testSetEqualsOrdering() {
+        $exp = true;
+        $set1 = new Set("a", "b", "c");
+        $set2 = new Set("a", "c", "b");
+        $act = $set1->equals($set2);
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::contains
+     */
+    public function testSetContainsTrue() {
+        $exp = true;
+        $set = new Set("a");
+        $act = $set->contains("a");
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
+     * @covers Set::contains
+     */
+    public function testSetContainsFalse() {
+        $exp = false;
+        $set = new Set("b");
+        $act = $set->contains("a");
+        $this->assertEquals($exp, $act);
+    }
+
 }
  
