@@ -8,8 +8,6 @@
  *
  * @author AK <akcodes3@gmail.com>
  * @version 0.1
- *
- * @todo Unit tests
  */
 class Set {
 
