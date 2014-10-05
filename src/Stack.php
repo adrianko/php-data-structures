@@ -9,6 +9,32 @@
  * @author AK <akcodes3@gmail.com>
  * @version 0.1
  */
-class Stack {
+class Stack extends Collection{
+
+    public function pop() {
+        if(empty($this->elements)) {
+            throw New Exception("Empty stack");
+        }
+
+        return array_shift($this->elements);
+    }
+
+    public function peek() {
+        if(empty($this->elements)) {
+            throw New Exception("Empty stack");
+        }
+        
+        return $this->elements[0];
+    }
+
+    public function push($e) {
+        array_unshift($this->elements, $e);
+
+        return $e;
+    }
+
+    public function search($e) {
+
+    }
 
 } 
