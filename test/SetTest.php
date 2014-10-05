@@ -79,6 +79,17 @@ class SetTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @covers Set::add
+     */
+    public function testSetAddDuplicate() {
+        $exp = array("a");
+        $set = new Set("a");
+        $set->add("a");
+        $act = $set->toArray();
+        $this->assertEquals($exp, $act);
+    }
+
+    /**
      * @covers Set::addAll
      */
     public function testSetAddAllTrue() {
