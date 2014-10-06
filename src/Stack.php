@@ -64,7 +64,12 @@ class Stack extends Collection {
      * @return int
      */
     public function search($e) {
-
+        foreach($this->elements as $k => $v) {
+            if($v == $e) {
+                return $k+1;
+            }
+        }
+        return -1;
     }
 
 } 
