@@ -13,8 +13,6 @@ require_once(realpath(dirname(__FILE__))."/../src/Collection.php");
  */
 class Queue extends Collection {
 
-    protected $elements;
-
     /**
      * Initializes the class and adds all args to the queue
      */
