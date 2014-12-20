@@ -22,8 +22,7 @@ abstract class Collection {
      */
     public function __construct() {
         $this->elements = array();
-        $args = func_get_args();
-        foreach($args as $a) {
+        foreach(func_get_args() as $a) {
             $this->add($a);
         }
     }
@@ -45,9 +44,8 @@ abstract class Collection {
      */
     public function addAll() {
         $exists = false;
-        $args = func_get_args();
-        foreach($args as $a) {
-            if($this->add($a) == true) {
+        foreach(func_get_args() as $a) {
+            if($this->add($a)) {
                 $exists = true;
             }
         }
@@ -76,8 +74,7 @@ abstract class Collection {
      * @return bool
      */
     public function containsAll() {
-        $args = func_get_args();
-        foreach($args as $a) {
+        foreach(func_get_args() as $a) {
             if(!in_array($a, $this->elements)) {
                 return false;
             }
@@ -133,9 +130,8 @@ abstract class Collection {
      */
     public function removeAll() {
         $exists = false;
-        $args = func_get_args();
-        foreach($args as $a) {
-            if($this->remove($a) == true) {
+        foreach(func_get_args() as $a) {
+            if($this->remove($a)) {
                 $exists = true;
             }
         }
@@ -145,12 +141,13 @@ abstract class Collection {
 
     /**
      * Removes all elements from the collection while retaining all specified
+     * @param String*
+     * @return bool
      */
     public function retainAll() {
         $exists = false;
-        $args = func_get_args();
         foreach($this->elements as $k => $e) {
-            if(!in_array($e, $args)) {
+            if(!in_array($e, func_get_args())) {
                 $exists = true;
                 unset($this->elements[$k]);
             }

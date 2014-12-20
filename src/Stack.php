@@ -19,8 +19,7 @@ class Stack extends Collection {
      */
     public function __construct() {
         parent::__construct();
-        $args = func_get_args();
-        foreach($args as $a) {
+        foreach(func_get_args() as $a) {
             $this->push($a);
         }
     }
@@ -66,9 +65,10 @@ class Stack extends Collection {
     public function search($e) {
         foreach($this->elements as $k => $v) {
             if($v == $e) {
-                return $k+1;
+                return ($k + 1);
             }
         }
+
         return -1;
     }
 

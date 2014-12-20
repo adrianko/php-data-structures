@@ -18,8 +18,7 @@ class Queue extends Collection {
      */
     public function __construct() {
         $this->elements = array();
-        $args = func_get_args();
-        foreach($args as $a) {
+        foreach(func_get_args() as $a) {
             $this->add($a);
         }
     }
