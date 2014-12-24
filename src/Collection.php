@@ -16,12 +16,16 @@ abstract class Collection {
      * @var array
      */
     protected $elements;
+    protected $firstUse;
+    protected $type;
 
     /**
      * Initializes the class and adds all args to the collection
      */
     public function __construct() {
         $this->elements = array();
+        $this->firstUse = false;
+
         foreach(func_get_args() as $a) {
             $this->add($a);
         }
@@ -33,9 +37,19 @@ abstract class Collection {
      * @return bool
      */
     public function add($e) {
-        $this->elements[] = $e;
+        if(!$this->firstUse) {
+            $this->firstUse = true;
+            $this->type = gettype($e);
+        }
 
-        return true;
+        if(gettype($e) == $this->type) {
+            $this->elements[] = $e;
+
+            return true;
+        }
+
+        return false;
+
     }
 
     /**
@@ -64,6 +78,8 @@ abstract class Collection {
      * Checks whether element is in the collection
      * @param $e
      * @return bool
+     *
+     * @todo Add support for nested collections arrays
      */
     public function contains($e) {
         return in_array($e, $this->elements);
@@ -75,7 +91,7 @@ abstract class Collection {
      */
     public function containsAll() {
         foreach(func_get_args() as $a) {
-            if(!in_array($a, $this->elements)) {
+            if(!$this->contains($a)) {
                 return false;
             }
         }
@@ -86,6 +102,8 @@ abstract class Collection {
      * Checks whether 2 collections are equal
      * @param Collection $c
      * @return bool
+     *
+     * @todo Nested collection/array checking
      */
     public function equals(Collection $c) {
         if(!is_array($c->toArray()) || !is_array($this->elements)) {

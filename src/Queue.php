@@ -27,16 +27,6 @@ class Queue extends Collection {
      * @param $e
      * @return bool
      */
-    public function add($e) {
-        $this->elements[] = $e;
-
-        return true;
-    }
-
-    /**
-     * @param $e
-     * @return bool
-     */
     public function offer($e) {
         return $this->add($e);
     }
